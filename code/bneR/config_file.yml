@@ -1,0 +1,66 @@
+#-----------------------------------------------------------------------#
+#–-------------------------BNER CONFIGURATION FILE----------------------#
+#-----------------------------------------------------------------------#
+
+## preproc processes options
+run_sp_context: FALSE # if TRUE spatial context will be intersected with input base models, need to do only once
+run_create_ref_grid: FALSE 
+run_keys_obs : FALSE
+run_keys_preds : FALSE
+run_keys_ev: FALSE
+run_make_training_dta : FALSE
+run_make_preds_dta : TRUE
+run_make_preds_ev: TRUE
+## bne processes options
+run_bne_grid_search: FALSE
+run_bne_cv: TRUE
+run_bne_predict_ref_grid: TRUE
+run_bne_predict_ev: TRUE
+run_postprocess: FALSE
+
+### set input parameters
+exp_folder_path : "/data0/shr/bne/exp/"
+data_path : "/data0/shr/bne/data/"
+## general
+expid : "exp_0095"
+temp_resolution : "daily"
+pollutant : "nox"
+sp_context : "california"
+date_begin : ["2010","04","01"] # YYYY, MM, DD
+date_end : ["2010","06","30"] # YYYY, MM, DD
+input_base_model_names : ["cams","equates","js", "omi"]
+obs_dta_name : "aqs"
+ev_dta_name : "calnex"
+# defining grids 
+ref_grid_from_input_base_model : 3 # write number referring to position in vector of input base model name above (input_base_model_names) if using this type of reference grid 
+ref_grid_resolution : NULL # in degrees (numeric); write NULL if reference grid from input base model
+# cv
+training_cvfolds_file_name : "training_cvfolds.csv"
+cv_fold_threshold : 10000
+
+### BNE run configuration
+## set parameters
+time_var : 'percentOfYear'
+# grid search (required to set the same number of elements in the lists
+scale_space_w_list : [2, 1, 0.5] # [a, b, c]from a to b in breaks of c
+scale_time_w_list : [2, 1, 0.5] # [a, b, c]from a to b in breaks of c
+scale_space_rp_list : [2, 1, 0.5] # [a, b, c]from a to b in breaks of c
+scale_time_rp_list : [2,1,0.5] # [a, b, c]from a to b in breaks of c
+scale_space_wvar_list : [2,1,0.5] # [a, b, c]from a to b in breaks of c
+lambda_list : [0.3679, 0.1353, 0.0498, 0.0183] # set four distinct lambdas
+lambda_rp_list : [0.3679, 0.1353, 0.0498, 0.0183] # set four distinct lambdas_rp
+seed_list : [1234] # set one seed
+n_sample_list : [1000,2000]  # set two n samples
+# cross-validation
+scale_space_w : 2
+scale_time_w : 1
+scale_space_rp : 2
+scale_time_rp : 1
+scale_space_wvar : 2
+lambda_w : 0.3679
+lambda_rp : 0.3679
+seed : 1234
+bne_mode : 'cv'   
+sample_n : 1000
+
+

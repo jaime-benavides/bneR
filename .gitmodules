@@ -1,0 +1,3 @@
+[submodule "code/BNE_Preprocesing_Code"]
+	path = code/BNE_Preprocesing_Code
+	url = https://github.com/CarlosECarrilloGallegos/BNE_Preprocesing_Code.git
